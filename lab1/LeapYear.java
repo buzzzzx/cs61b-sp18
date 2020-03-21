@@ -3,7 +3,7 @@
  */
 public class LeapYear {
 
-    /** Check year whether a leap year. */
+    /** Check input year whether a leap year. */
     public static boolean isLeapYear(int year) {
         if ((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0))) {
             return true;
