@@ -1,4 +1,4 @@
-import com.sun.tools.classfile.ConstantPool;
+//import com.sun.tools.classfile.ConstantPool;
 
 import java.util.Formatter;
 
@@ -100,7 +100,6 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
         if (A == null && B != null) {
             return catenate(B, null);
         } else if (A == null && B == null) {
@@ -108,34 +107,7 @@ public class IntList {
         }
 
         IntList L = new IntList(A.first, null);
-        IntList p = L;
-        A = A.rest;
-        while (A != null) {
-            p.rest = new IntList(A.first, null);
-            p = p.rest;
-            A = A.rest;
-        }
-
-        while (B != null) {
-            p.rest = new IntList(B.first, null);
-            p = p.rest;
-            B = B.rest;
-        }
-        return L;
-    }
-
-
-    /** Recursion version of catenate. */
-    public static IntList catenate2(IntList A, IntList B) {
-        //TODO:  fill in method
-        if (A == null && B != null) {
-            return catenate(B, null);
-        } else if (A == null && B == null) {
-            return null;
-        }
-
-        IntList L = new IntList(A.first, null);
-        L.rest = catenate2(A.rest, B);
+        L.rest = catenate(A.rest, B);
         return L;
     }
 
