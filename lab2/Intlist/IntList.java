@@ -1,3 +1,5 @@
+import com.sun.tools.classfile.ConstantPool;
+
 import java.util.Formatter;
 
 /**
@@ -82,7 +84,15 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if (A == null) {
+            return B;
+        } else if (A.rest == null) {
+            A.rest = B;
+            return A;
+        } else {
+            A.rest = dcatenate(A.rest, B);
+            return A;
+        }
     }
 
     /**
@@ -91,11 +101,43 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if (A == null && B != null) {
+            return catenate(B, null);
+        } else if (A == null && B == null) {
+            return null;
+        }
+
+        IntList L = new IntList(A.first, null);
+        IntList p = L;
+        A = A.rest;
+        while (A != null) {
+            p.rest = new IntList(A.first, null);
+            p = p.rest;
+            A = A.rest;
+        }
+
+        while (B != null) {
+            p.rest = new IntList(B.first, null);
+            p = p.rest;
+            B = B.rest;
+        }
+        return L;
     }
 
 
+    /** Recursion version of catenate. */
+    public static IntList catenate2(IntList A, IntList B) {
+        //TODO:  fill in method
+        if (A == null && B != null) {
+            return catenate(B, null);
+        } else if (A == null && B == null) {
+            return null;
+        }
 
+        IntList L = new IntList(A.first, null);
+        L.rest = catenate2(A.rest, B);
+        return L;
+    }
 
 
 
