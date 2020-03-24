@@ -5,7 +5,7 @@
  */
 public class LinkedListDeque<T> {
 
-    public class Node {
+    private class Node {
         private T item;
         private Node prev;
         private Node next;
@@ -134,7 +134,7 @@ public class LinkedListDeque<T> {
     /**
      * Helper method that get the item at the given index.
      */
-    public T getRecursiveHelper(int index, Node p) {
+    private T getRecursiveHelper(int index, Node p) {
         if (p.next == sentinel) {
             return null;
         }
