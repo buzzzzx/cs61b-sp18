@@ -1,6 +1,5 @@
 import org.junit.Test;
 
-import java.util.WeakHashMap;
 
 import static org.junit.Assert.*;
 
@@ -36,9 +35,13 @@ public class TestPalindrome {
     public void testIsPalindromeWithComparator() {
         CharacterComparator cc = new OffByOne();
         Boolean actual1 = palindrome.isPalindrome("flake", cc);
-        Boolean actual2 = palindrome.isPalindrome("flake", cc);
-        Boolean actual3 = palindrome.isPalindrome("a");
-        Boolean actual4 = palindrome.isPalindrome("");
+        Boolean actual2 = palindrome.isPalindrome("flakeaa", cc);
+        Boolean actual3 = palindrome.isPalindrome("a", cc);
+        Boolean actual4 = palindrome.isPalindrome("", cc);
 
+        assertTrue(actual1);
+        assertTrue(actual3);
+        assertFalse(actual2);
+        assertTrue(actual4);
     }
 }

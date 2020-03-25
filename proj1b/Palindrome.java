@@ -16,7 +16,7 @@ public class Palindrome {
     /**
      * Helper method that return true if word is palindrome.
      */
-    public boolean isPalindromeHelper(Deque<Character> D) {
+    private boolean isPalindromeHelper(Deque<Character> D) {
         if (D.isEmpty() || (D.size() == 1)) {
             return true;
         }
@@ -36,19 +36,19 @@ public class Palindrome {
     /**
      * Helper method that return true if word is palindrome according to the character comparison.
      */
-    public boolean isPalindromeWithComparatorHelper(Deque<Character> D, CharacterComparator cc) {
+    private boolean isPalindromeWithComparatorHelper(Deque<Character> D, CharacterComparator cc) {
         if (D.isEmpty() || (D.size() == 1)) {
             return true;
         }
         char last = D.removeLast();
         char first = D.removeFirst();
-        return (cc.equalChars(last, first)) && isPalindromeHelper(D);
+        return (cc.equalChars(last, first)) && isPalindromeWithComparatorHelper(D, cc);
     }
     /**
      * Returns true if the word is a palindrome according to the character comparison.
      */
     public boolean isPalindrome(String word, CharacterComparator cc) {
         Deque<Character> D = wordToDeque(word);
-        return false;
+        return isPalindromeWithComparatorHelper(D, cc);
     }
 }
