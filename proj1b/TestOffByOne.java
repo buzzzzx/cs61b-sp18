@@ -15,7 +15,7 @@ public class TestOffByOne {
         boolean actual3 = offByOne.equalChars('a', 'z');
         boolean actual4 = offByOne.equalChars('d', 'd');
         boolean actual5 = offByOne.equalChars('&', '%');
-        boolean actual6 = offByOne.equalChars('B', 'b');
+        boolean actual6 = offByOne.equalChars('B', 'a');
 
         assertTrue(actual1);
         assertTrue(actual2);
