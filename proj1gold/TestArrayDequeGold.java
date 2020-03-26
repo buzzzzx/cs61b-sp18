@@ -44,8 +44,5 @@ public class TestArrayDequeGold {
             }
 
         }
-        for (int i = 0; i < s.size(); i += 1) {
-            assertEquals(s.get(i), t.get(i));
-        }
     }
 }
